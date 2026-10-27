@@ -39,6 +39,8 @@ coding assistant can run it for you.
 examples/manoo-djoon holds a finished track list for a two hour mix, with a player and
 clickable times. Open its index.html in a browser. The audio file is not included.
 
+[Watch the original mix on YouTube](https://www.youtube.com/watch?v=p01N7mNPwwU)
+
 ## What each track holds
 
 Every track in the list has three parts:
