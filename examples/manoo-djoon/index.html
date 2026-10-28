@@ -2,76 +2,167 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Manoo at Djoon, July 12, 2025: Track List</title>
 <style>
-:root{--bg:#faf7f2;--fg:#2a2230;--mut:#6b6275;--card:#fff;--ac:#7a3fd1}
-@media(prefers-color-scheme:dark){:root{--bg:#17131c;--fg:#f1ecf7;--mut:#a79db3;--card:#221c2a;--ac:#b48cff}}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 system-ui,sans-serif}
-main{max-width:760px;margin:0 auto;padding:28px 16px 80px}
-h1{font-size:28px;margin:0 0 4px} h2{margin:32px 0 8px}
-p.sub{color:var(--mut);margin:0 0 18px}
-audio{width:100%;position:sticky;top:8px;background:var(--card);border-radius:10px}
-ol,ul{list-style:none;padding:0;margin:0} li{padding:9px 0;border-bottom:1px solid rgba(128,128,128,.2)}
-a{color:var(--ac)} .ts{font:inherit;font-variant-numeric:tabular-nums;background:none;border:1px solid var(--ac);color:var(--ac);border-radius:6px;padding:0 7px;margin-right:6px;cursor:pointer}
-.vox{font-size:12px;background:var(--ac);color:var(--bg);border-radius:10px;padding:1px 8px;margin-left:6px}
+body{margin:0;background:#faf7f2;color:#2a2230;font:17px/1.6 system-ui,sans-serif}
+main{max-width:900px;margin:0 auto;padding:36px 20px 90px}
+h1{font-size:2.2rem;margin:0 0 18px} h2{margin:2em 0 .6em}
+p.credit{margin:0 0 26px} a{color:#b4531a}
+.vox{font-size:.75rem;font-weight:700;background:#efe4ff;color:#7a3fd1;border-radius:999px;padding:1px 9px;margin-left:8px}
+.tfsp-wrap{margin:0 0 1.8em}
+.tfsp{position:relative;overflow:hidden;border-radius:22px;padding:22px 24px 18px;color:#fff;background:linear-gradient(135deg,#2a1531 0%,#4a2350 52%,#24365f 100%);box-shadow:0 14px 40px rgba(40,15,50,.35)}
+.tfsp::before{content:"";position:absolute;inset:0;background:var(--tfs-flowers) center/cover no-repeat;opacity:.13;mix-blend-mode:screen;pointer-events:none}
+.tfsp>*{position:relative}
+.tfsp input[type=range]{background:transparent!important;border:0!important;padding:0!important;box-shadow:none!important;outline-offset:3px}
+.tfsp-top{display:flex;align-items:center;gap:20px}
+.tfsp-play{flex:0 0 auto;width:76px;height:76px;border-radius:50%;border:0;padding:0;cursor:pointer;color:#fff;display:grid;place-items:center;background:conic-gradient(from 200deg,#f08a24,#e8467c,#a14fd6,#3b7be0,#f08a24);box-shadow:0 0 0 4px rgba(255,255,255,.18),0 8px 24px rgba(0,0,0,.4);transition:transform .15s}
+.tfsp-play:hover{transform:scale(1.07)}
+.tfsp-play:focus-visible,.tfsp-skip:focus-visible,.tfsp-speed:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.tfsp-play svg{width:34px;height:34px;fill:#fff;grid-area:1/1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.tfsp-play .i-pause{display:none}
+.tfsp.playing .tfsp-play .i-play{display:none}
+.tfsp.playing .tfsp-play .i-pause{display:block}
+.tfsp.playing .tfsp-play{animation:tfspPulse 1.6s ease-in-out infinite}
+@keyframes tfspPulse{0%,100%{box-shadow:0 0 0 4px rgba(255,255,255,.18),0 0 0 0 rgba(232,70,124,.55),0 8px 24px rgba(0,0,0,.4)}50%{box-shadow:0 0 0 4px rgba(255,255,255,.18),0 0 0 16px rgba(232,70,124,0),0 8px 24px rgba(0,0,0,.4)}}
+.tfsp-viz{flex:1 1 auto;width:100%;min-width:0;height:76px;display:block}
+.tfsp-seekrow{display:flex;align-items:center;gap:12px;margin-top:14px;font-variant-numeric:tabular-nums;font-size:.9rem;opacity:.95}
+.tfsp-seekbox{position:relative;flex:1 1 auto}
+.tfsp-seek{-webkit-appearance:none;appearance:none;width:100%;height:14px;margin:0;background:transparent;cursor:pointer;--p:0%;--b:0%}
+.tfsp-seek::-webkit-slider-runnable-track{height:10px;border-radius:99px;background:linear-gradient(90deg,#f08a24,#e8467c var(--p),#a14fd6 var(--p),transparent var(--p)) ,linear-gradient(90deg,rgba(255,255,255,.35) var(--b),rgba(255,255,255,.14) var(--b));background:linear-gradient(90deg,#f08a24 0%,#e8467c calc(var(--p)*.5),#a14fd6 calc(var(--p)*.8),#3b7be0 var(--p),rgba(255,255,255,.32) var(--p),rgba(255,255,255,.32) var(--b),rgba(255,255,255,.14) var(--b))}
+.tfsp-seek::-moz-range-track{height:10px;border-radius:99px;background:rgba(255,255,255,.14)}
+.tfsp-seek::-moz-range-progress{height:10px;border-radius:99px;background:linear-gradient(90deg,#f08a24,#e8467c,#3b7be0)}
+.tfsp-seek::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-6px;border-radius:50%;background:#fff;border:3px solid #e8467c;box-shadow:0 0 12px rgba(232,70,124,.9)}
+.tfsp-seek::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #e8467c;box-shadow:0 0 12px rgba(232,70,124,.9)}
+.tfsp-tip{position:absolute;bottom:22px;left:0;transform:translateX(-50%);padding:2px 8px;border-radius:8px;background:#fff;color:#2a1531;font-size:.78rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .12s}
+.tfsp-seekbox:hover .tfsp-tip{opacity:1}
+.tfsp-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px}
+.tfsp-skip,.tfsp-speed{border:2px solid rgba(255,255,255,.75);background:rgba(255,255,255,.16);color:#fff;border-radius:999px;padding:.5em 1.1em;font:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:background .15s;display:inline-flex;align-items:center;gap:.45em;line-height:1}
+.tfsp-skip svg{width:1.5em;height:1.5em;fill:#fff;flex:0 0 auto}
+.tfsp-skip b{font-size:1.15em;margin-right:-.3em}
+.tfsp-skip small{font-size:.75em;font-weight:600;opacity:.9}
+.tfsp-skip:hover,.tfsp-speed:hover{background:rgba(255,255,255,.25)}
+.tfsp-vol{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:.85rem}
+.tfsp-volume{-webkit-appearance:none;appearance:none;width:110px;height:14px;accent-color:#e8467c}
+.tfsp-volume::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:rgba(255,255,255,.4)}
+.tfsp-volume::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-5px;border-radius:50%;background:#fff;border:3px solid #e8467c}
+.tfsp-dls{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px}
+.tfsp-wrap a.tfsp-dl{position:relative;display:inline-flex;align-items:center;gap:.6em;padding:.85em 1.6em;border-radius:999px;border:0;color:#fff;font-weight:700;text-decoration:none;text-shadow:0 1px 4px rgba(0,0,0,.65);background:linear-gradient(rgba(30,12,38,.35),rgba(30,12,38,.5)),var(--tfs-flowers,#6b5b7b) 12% 50%/210% auto no-repeat;box-shadow:0 6px 18px rgba(40,15,50,.3);transition:transform .18s,box-shadow .18s,background-position .6s}
+.tfsp-wrap a.tfsp-dl1{background-position:0 0,88% 50%}
+.tfsp-wrap a.tfsp-dl2{background-position:0 0,50% 50%}
+.tfsp-wrap a.tfsp-dl:hover{color:#fff;transform:translateY(-3px);box-shadow:0 12px 26px rgba(40,15,50,.4);background-position:0 0,40% 50%}
+.tfsp-wrap a.tfsp-dl1:hover{background-position:0 0,60% 50%}
+.tfsp-dlarrow{display:inline-grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;background:rgba(255,255,255,.25);font-size:1.05em}
+@media (max-width:560px){.tfsp{padding:16px}.tfsp-play{width:62px;height:62px}.tfsp-viz{height:62px}.tfsp-vol{display:none}}
+@media (prefers-reduced-motion:reduce){.tfsp.playing .tfsp-play{animation:none}}
+.tfs-tracklist-title{margin:2em 0 .6em}
+.tfsp-now{min-height:1.6em;margin:2px 4px 8px 6px;color:#fff;font-weight:600;font-size:1.02rem;line-height:1.4;opacity:0;transition:opacity .25s}
+.tfsp-now.on{opacity:.95} /* tfs-now */
+.tfs-tracklist{list-style:none;margin:0 0 1.5em;padding:0}
+.entry-content ol.tfs-tracklist,ol.tfs-tracklist{list-style:none;margin-left:0;padding-left:0} /* tfs-ol-fix */
+.tfs-tracklist li{padding:.55em .2em;border-bottom:1px solid rgba(42,21,49,.12);line-height:1.45}
+.tfs-tracklist .tfs-ts{display:inline-block;min-width:4.6em;margin-right:.5em;padding:.1em .6em;border-radius:999px;background:linear-gradient(135deg,#f08a24,#e8467c 55%,#3b7be0);color:#fff;font-variant-numeric:tabular-nums;font-size:.9em;font-weight:700;cursor:pointer;text-align:center}
+.tfs-tracklist .tfs-ts:hover,.tfs-tracklist .tfs-ts:focus{background:linear-gradient(135deg,#f08a24,#e8467c,#3b7be0);color:#fff;outline:none}
+.tfs-tracklist a{font-weight:600}
 </style></head><body><main>
-<h1>Manoo at Djoon</h1><p class="sub">July 12, 2025. Track list with times. Click a time to jump to it.</p>
-<p class="sub">We are using this mix by the amazing Manoo to highlight the capabilities of the <a href="https://github.com/the-fertile-soil/djmix-tracklist" target="_blank" rel="noopener">DJ Mix Track List</a> software. View the <a href="https://www.youtube.com/watch?v=p01N7mNPwwU" target="_blank" rel="noopener">original mix on YouTube here</a>.</p>
-<audio id="a" controls preload="metadata" src="manoo-djoon.mp3"></audio>
-<p id="now" class="sub" aria-live="polite" style="min-height:1.6em;margin:8px 0 0;font-weight:600"></p>
-<h2>Track List</h2><ol>
-<li><button class="ts" data-seek="45">0:45</button> <a href="https://www.youtube.com/channel/UC4ajN6GZHH3A3-kyuwSZnCA" target="_blank" rel="noopener">Quentin Harris</a> - <a href="https://www.youtube.com/watch?v=azpjV7ymAGc" target="_blank" rel="noopener">My Joy</a></li>
-<li><button class="ts" data-seek="225">3:45</button> <a href="https://www.youtube.com/channel/UC-mUQedlaazRzM3U2q3rFUA" target="_blank" rel="noopener">Télépopmusik</a> - <a href="https://www.youtube.com/watch?v=RgkycA7aMvs" target="_blank" rel="noopener">Love Can Damage Your Health (Abicah Soul/Dennis Ferrer Remix)</a></li>
-<li><button class="ts" data-seek="585">9:45</button> Michal Martyniuk &amp; Eric Kupper - New Things (feat. YaniKa) [Eric Kupper Remix]</li>
-<li><button class="ts" data-seek="795">13:15</button> <a href="https://www.youtube.com/channel/UClHlXlJ1kyQcQIp6VYi4-MQ" target="_blank" rel="noopener">DJ Le Roi</a> - <a href="https://www.youtube.com/watch?v=1DHrjZ4NnQU" target="_blank" rel="noopener">Get Ready (Halo City Deep Vocal Dub Mix)</a> <span class="vox">vocal</span></li>
-<li><button class="ts" data-seek="1305">21:45</button> <a href="https://www.youtube.com/channel/UCFI1aw_bIkig8ttaeoGm2Jg" target="_blank" rel="noopener">musclecars</a> - <a href="https://www.youtube.com/watch?v=Z8JGfghq3mU" target="_blank" rel="noopener">Water (feat. New Past) [Mark Francis Remix]</a></li>
-<li><button class="ts" data-seek="1905">31:45</button> <a href="https://www.youtube.com/channel/UCDtzR7exCkjFIn8E7DBqfIg" target="_blank" rel="noopener">Chaleee</a> &amp; DJEFF &amp; <a href="http://djelytapa.com/" target="_blank" rel="noopener">Djely Tapa</a> - <a href="https://www.youtube.com/watch?v=kQ-AWEwnU8s" target="_blank" rel="noopener">Freedom (Barokan Remix)</a></li>
-<li><button class="ts" data-seek="2295">38:15</button> <a href="https://www.youtube.com/channel/UChKVQVn14nIt4pTW34SUU6w" target="_blank" rel="noopener">Akpossoul</a> &amp; <a href="https://www.youtube.com/channel/UCILRRuu-qe_HqRH_KJ_6g-A" target="_blank" rel="noopener">Manoo</a> - <a href="https://www.youtube.com/watch?v=pSDET13QouE" target="_blank" rel="noopener">FORCE</a></li>
-<li><button class="ts" data-seek="2685">44:45</button> <a href="https://www.youtube.com/channel/UCXeLX0s9Kd2w9-KIyKmn7Cw" target="_blank" rel="noopener">Dr Feel</a> &amp; Toshi - <a href="https://www.youtube.com/watch?v=2weUiDCtCoc" target="_blank" rel="noopener">Amanxeba (Manoo Remix)</a></li>
-<li><button class="ts" data-seek="3225">53:45</button> <a href="https://www.youtube.com/channel/UCLcu73Vxl_CKAWW5l2AxAPQ" target="_blank" rel="noopener">Tone Depth</a> - <a href="https://www.youtube.com/watch?v=VldMUVjihiM" target="_blank" rel="noopener">Pelago</a></li>
-<li><button class="ts" data-seek="3525">58:45</button> <a href="https://www.youtube.com/channel/UCd5WX10CVadiGoKgzwaGBkQ" target="_blank" rel="noopener">Voices</a> - <a href="https://www.youtube.com/watch?v=35-hyeA5aEI" target="_blank" rel="noopener">Voices in My Mind (Maw Mix)</a></li>
-<li><button class="ts" data-seek="3885">1:04:45</button> <a href="https://www.youtube.com/channel/UCEvY3IU5mnJqiSqt8iiXKCw" target="_blank" rel="noopener">Claudio Topputo</a> &amp; Fabrizio Maselli - <a href="https://www.youtube.com/watch?v=dApdesnMm5c" target="_blank" rel="noopener">My Hands (Santi Fernández Remix)</a></li>
-<li><button class="ts" data-seek="3945">1:05:45</button> <a href="https://www.youtube.com/channel/UCK-SfxONc-TjG2orCB3EmVQ" target="_blank" rel="noopener">Tiger Stripes</a> - <a href="https://www.youtube.com/watch?v=1I8iK2U-TjQ" target="_blank" rel="noopener">Keep a Movin&#x27;</a></li>
-<li><button class="ts" data-seek="4545">1:15:45</button> <a href="https://www.youtube.com/channel/UCpDJl2EmP7Oh90Vylx0dZtA" target="_blank" rel="noopener">BLR</a> &amp; Rave &amp; Crave - <a href="https://www.youtube.com/watch?v=y5U-I5wk1uo" target="_blank" rel="noopener">Taj</a></li>
-<li><button class="ts" data-seek="4665">1:17:45</button> <a href="http://axwell.co.uk/" target="_blank" rel="noopener">Axwell</a> - <a href="https://www.youtube.com/watch?v=889H0Am7vFo" target="_blank" rel="noopener">Feel the Vibe (Mixed)</a></li>
-<li><button class="ts" data-seek="4845">1:20:45</button> <a href="https://www.youtube.com/channel/UCJhmn-3wZV5BmwDFU9BLLIg" target="_blank" rel="noopener">Dlala Thukzin</a> &amp; Kabza De Small &amp; MK Productions - <a href="https://www.youtube.com/watch?v=i59MPcNTy0c" target="_blank" rel="noopener">Muthi (feat. Zeh McGeba &amp; Masuda)</a></li>
+<h1>Manoo at Djoon</h1>
+<p class="credit">We are using this mix by the amazing Manoo to highlight the capabilities of the <a href="https://github.com/the-fertile-soil/djmix-tracklist" target="_blank" rel="noopener">DJ Mix Track List</a> software. View the <a href="https://www.youtube.com/watch?v=p01N7mNPwwU" target="_blank" rel="noopener">original mix on YouTube here</a>.</p>
+<div class="tfsp-wrap"><div class="tfsp" data-dur="4921" data-title="Manoo at Djoon">
+<audio preload="none" src="manoo-djoon.mp3"></audio>
+<div class="tfsp-top"><button type="button" class="tfsp-play" aria-label="Play"><svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button><canvas class="tfsp-viz" width="640" height="120" aria-hidden="true"></canvas></div>
+<div class="tfsp-now" aria-live="polite"></div>
+<div class="tfsp-seekrow"><span class="tfsp-cur">0:00</span><div class="tfsp-seekbox"><input type="range" class="tfsp-seek" min="0" max="1000" value="0" step="1" aria-label="Seek"><span class="tfsp-tip">0:00</span></div><span class="tfsp-tot">1:22:01</span></div>
+<div class="tfsp-ctl"><button type="button" class="tfsp-skip" data-skip="-30" aria-label="Back 30 seconds"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v14L2 12zM22 5v14l-9-7z"/></svg><b>30</b><small>s</small></button><button type="button" class="tfsp-skip" data-skip="30" aria-label="Forward 30 seconds"><b>30</b><small>s</small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5v14l9-7zM2 5v14l9-7z"/></svg></button><button type="button" class="tfsp-speed" aria-label="Playback speed">1x</button><label class="tfsp-vol">Vol <input type="range" class="tfsp-volume" min="0" max="100" value="100" aria-label="Volume"></label></div>
+</div></div>
+<p>Click a time to jump to that moment in the mix.</p>
+<h2>Track List</h2>
+<ol class="tfs-tracklist">
+<li><span class="tfs-ts" data-seek="45" role="button" tabindex="0" title="Jump to 0:45">0:45</span> <a href="https://www.youtube.com/channel/UC4ajN6GZHH3A3-kyuwSZnCA" target="_blank" rel="noopener">Quentin Harris</a> - <a href="https://www.youtube.com/watch?v=azpjV7ymAGc" target="_blank" rel="noopener">My Joy</a></li>
+<li><span class="tfs-ts" data-seek="225" role="button" tabindex="0" title="Jump to 3:45">3:45</span> <a href="https://www.youtube.com/channel/UC-mUQedlaazRzM3U2q3rFUA" target="_blank" rel="noopener">Télépopmusik</a> - <a href="https://www.youtube.com/watch?v=RgkycA7aMvs" target="_blank" rel="noopener">Love Can Damage Your Health (Abicah Soul/Dennis Ferrer Remix)</a></li>
+<li><span class="tfs-ts" data-seek="585" role="button" tabindex="0" title="Jump to 9:45">9:45</span> Michal Martyniuk &amp; Eric Kupper - New Things (feat. YaniKa) [Eric Kupper Remix]</li>
+<li><span class="tfs-ts" data-seek="795" role="button" tabindex="0" title="Jump to 13:15">13:15</span> <a href="https://www.youtube.com/channel/UClHlXlJ1kyQcQIp6VYi4-MQ" target="_blank" rel="noopener">DJ Le Roi</a> - <a href="https://www.youtube.com/watch?v=1DHrjZ4NnQU" target="_blank" rel="noopener">Get Ready (Halo City Deep Vocal Dub Mix)</a> <span class="vox">vocal</span></li>
+<li><span class="tfs-ts" data-seek="1305" role="button" tabindex="0" title="Jump to 21:45">21:45</span> <a href="https://www.youtube.com/channel/UCFI1aw_bIkig8ttaeoGm2Jg" target="_blank" rel="noopener">musclecars</a> - <a href="https://www.youtube.com/watch?v=Z8JGfghq3mU" target="_blank" rel="noopener">Water (feat. New Past) [Mark Francis Remix]</a></li>
+<li><span class="tfs-ts" data-seek="1905" role="button" tabindex="0" title="Jump to 31:45">31:45</span> <a href="https://www.youtube.com/channel/UCDtzR7exCkjFIn8E7DBqfIg" target="_blank" rel="noopener">Chaleee</a> &amp; DJEFF &amp; <a href="http://djelytapa.com/" target="_blank" rel="noopener">Djely Tapa</a> - <a href="https://www.youtube.com/watch?v=kQ-AWEwnU8s" target="_blank" rel="noopener">Freedom (Barokan Remix)</a></li>
+<li><span class="tfs-ts" data-seek="2295" role="button" tabindex="0" title="Jump to 38:15">38:15</span> <a href="https://www.youtube.com/channel/UChKVQVn14nIt4pTW34SUU6w" target="_blank" rel="noopener">Akpossoul</a> &amp; <a href="https://www.youtube.com/channel/UCILRRuu-qe_HqRH_KJ_6g-A" target="_blank" rel="noopener">Manoo</a> - <a href="https://www.youtube.com/watch?v=pSDET13QouE" target="_blank" rel="noopener">FORCE</a></li>
+<li><span class="tfs-ts" data-seek="2685" role="button" tabindex="0" title="Jump to 44:45">44:45</span> <a href="https://www.youtube.com/channel/UCXeLX0s9Kd2w9-KIyKmn7Cw" target="_blank" rel="noopener">Dr Feel</a> &amp; Toshi - <a href="https://www.youtube.com/watch?v=2weUiDCtCoc" target="_blank" rel="noopener">Amanxeba (Manoo Remix)</a></li>
+<li><span class="tfs-ts" data-seek="3225" role="button" tabindex="0" title="Jump to 53:45">53:45</span> <a href="https://www.youtube.com/channel/UCLcu73Vxl_CKAWW5l2AxAPQ" target="_blank" rel="noopener">Tone Depth</a> - <a href="https://www.youtube.com/watch?v=VldMUVjihiM" target="_blank" rel="noopener">Pelago</a></li>
+<li><span class="tfs-ts" data-seek="3525" role="button" tabindex="0" title="Jump to 58:45">58:45</span> <a href="https://www.youtube.com/channel/UCd5WX10CVadiGoKgzwaGBkQ" target="_blank" rel="noopener">Voices</a> - <a href="https://www.youtube.com/watch?v=35-hyeA5aEI" target="_blank" rel="noopener">Voices in My Mind (Maw Mix)</a></li>
+<li><span class="tfs-ts" data-seek="3885" role="button" tabindex="0" title="Jump to 1:04:45">1:04:45</span> <a href="https://www.youtube.com/channel/UCEvY3IU5mnJqiSqt8iiXKCw" target="_blank" rel="noopener">Claudio Topputo</a> &amp; Fabrizio Maselli - <a href="https://www.youtube.com/watch?v=dApdesnMm5c" target="_blank" rel="noopener">My Hands (Santi Fernández Remix)</a></li>
+<li><span class="tfs-ts" data-seek="3945" role="button" tabindex="0" title="Jump to 1:05:45">1:05:45</span> <a href="https://www.youtube.com/channel/UCK-SfxONc-TjG2orCB3EmVQ" target="_blank" rel="noopener">Tiger Stripes</a> - <a href="https://www.youtube.com/watch?v=1I8iK2U-TjQ" target="_blank" rel="noopener">Keep a Movin&#x27;</a></li>
+<li><span class="tfs-ts" data-seek="4545" role="button" tabindex="0" title="Jump to 1:15:45">1:15:45</span> <a href="https://www.youtube.com/channel/UCpDJl2EmP7Oh90Vylx0dZtA" target="_blank" rel="noopener">BLR</a> &amp; Rave &amp; Crave - <a href="https://www.youtube.com/watch?v=y5U-I5wk1uo" target="_blank" rel="noopener">Taj</a></li>
+<li><span class="tfs-ts" data-seek="4665" role="button" tabindex="0" title="Jump to 1:17:45">1:17:45</span> <a href="http://axwell.co.uk/" target="_blank" rel="noopener">Axwell</a> - <a href="https://www.youtube.com/watch?v=889H0Am7vFo" target="_blank" rel="noopener">Feel the Vibe (Mixed)</a></li>
+<li><span class="tfs-ts" data-seek="4845" role="button" tabindex="0" title="Jump to 1:20:45">1:20:45</span> <a href="https://www.youtube.com/channel/UCJhmn-3wZV5BmwDFU9BLLIg" target="_blank" rel="noopener">Dlala Thukzin</a> &amp; Kabza De Small &amp; MK Productions - <a href="https://www.youtube.com/watch?v=i59MPcNTy0c" target="_blank" rel="noopener">Muthi (feat. Zeh McGeba &amp; Masuda)</a></li>
 </ol>
 <h2>Heard once: vocals, accapellas and layered samples</h2>
-<p class="sub">Detected at only one point in the mix, so these are usually quick vocal layers, accapellas or samples rather than full tracks.</p>
-<ul>
-<li><button class="ts" data-seek="525">8:45</button> <a href="https://www.youtube.com/channel/UCU_km9t9g2GOdRI3YpgaTNQ" target="_blank" rel="noopener">Vencer Cafe</a> &amp; Orlam - <a href="https://www.youtube.com/watch?v=pvcc-wqJcvI" target="_blank" rel="noopener">Called to Say Hi (Rumba Mix)</a></li>
-<li><button class="ts" data-seek="1185">19:45</button> <a href="https://www.youtube.com/channel/UCnOxaDXBiBXg9Nn9hKWu6aw" target="_blank" rel="noopener">The DangerFeel Newbies</a> - <a href="https://www.youtube.com/watch?v=25UEsOIg8EE" target="_blank" rel="noopener">What Am I Here for? (Ndatl Vocal - Danny Krivit Edit)</a> <span class="vox">vocal</span></li>
-<li><button class="ts" data-seek="1215">20:15</button> <a href="http://www.tanyalouise.com/" target="_blank" rel="noopener">Tanya Louise</a> - <a href="https://www.youtube.com/watch?v=Nc1sDTvRiQ0" target="_blank" rel="noopener">Deep in You (Rob&#x27;s Vibey Dub)</a></li>
-<li><button class="ts" data-seek="1275">21:15</button> <a href="https://www.youtube.com/channel/UCuED6By6MiMj4Zv7P7Zq3Og" target="_blank" rel="noopener">Tinush</a> - <a href="https://www.youtube.com/watch?v=0Z8_a8qxv_0" target="_blank" rel="noopener">Struggle (Franky Rizardo Sunset Mix)</a></li>
-<li><button class="ts" data-seek="1485">24:45</button> EMMANUELLE - Italove</li>
-<li><button class="ts" data-seek="1695">28:15</button> <a href="https://www.youtube.com/channel/UCq_cQwWiyUPK8aYutyL1wcA" target="_blank" rel="noopener">Venntaur</a> - <a href="https://www.youtube.com/watch?v=O2ghF7KPTEo" target="_blank" rel="noopener">You Got Feeling (Datakestra Remix)</a></li>
-<li><button class="ts" data-seek="2535">42:15</button> <a href="http://kingbritt.com/" target="_blank" rel="noopener">King Britt</a> &amp; <a href="https://www.musixrecords.com/firefly/" target="_blank" rel="noopener">Firefly</a> - <a href="https://www.youtube.com/watch?v=rzsP2fxPzmk" target="_blank" rel="noopener">Supernatural (feat. Ursula Rucker) [Accapella]</a> <span class="vox">vocal</span></li>
-<li><button class="ts" data-seek="3195">53:15</button> <a href="http://www.formatb.com/" target="_blank" rel="noopener">Format:B</a> - <a href="https://www.youtube.com/watch?v=vKiRgcbB6sQ" target="_blank" rel="noopener">Chunky</a></li>
-<li><button class="ts" data-seek="3345">55:45</button> <a href="http://cosmic-gate.de/" target="_blank" rel="noopener">Cosmic Gate</a> - <a href="https://www.youtube.com/watch?v=aKrUBpPGr4I" target="_blank" rel="noopener">Light Years (Extended Mix)</a></li>
-<li><button class="ts" data-seek="3435">57:15</button> <a href="https://www.youtube.com/channel/UCm1xZ08wkwoJjclZu3O6zxA" target="_blank" rel="noopener">Blaze</a> - <a href="https://www.youtube.com/watch?v=7CI6fBmMH64" target="_blank" rel="noopener">My Beat (feat. Palmer Brown) [Solid Groove Dub]</a></li>
-<li><button class="ts" data-seek="3825">1:03:45</button> <a href="http://www.jain-music.com/" target="_blank" rel="noopener">Jain</a> - <a href="https://www.youtube.com/watch?v=BEPR2QoBajU" target="_blank" rel="noopener">Makeba (De Fault X Rassell Khan Remix)</a></li>
-<li><button class="ts" data-seek="4035">1:07:15</button> <a href="https://www.youtube.com/channel/UCV-iSZdmPWV9pq-t-dlYzQg" target="_blank" rel="noopener">Ralph Noah</a> &amp; U-Gin - <a href="https://www.youtube.com/watch?v=4TFW-R-X3Vc" target="_blank" rel="noopener">L&#x27;appuntamento</a></li>
-<li><button class="ts" data-seek="4065">1:07:45</button> <a href="https://www.youtube.com/channel/UCuz1DxuvTNQ1KqwboDvk3KQ" target="_blank" rel="noopener">Girls of the Internet</a> &amp; Anelisa Lamola - <a href="https://www.youtube.com/watch?v=x4B8MQj0ZN8" target="_blank" rel="noopener">Affirmations (Dennis Ferrer Remix)</a></li>
-<li><button class="ts" data-seek="4095">1:08:15</button> <a href="https://www.youtube.com/channel/UC4N1snt2b0d83vOkvaWP6mg" target="_blank" rel="noopener">Vintage Culture</a> - <a href="https://www.youtube.com/watch?v=omK81KRfMWg" target="_blank" rel="noopener">Space</a></li>
-<li><button class="ts" data-seek="4275">1:11:15</button> <a href="https://www.youtube.com/channel/UCHE2KBhRS-8VWJUzUGla9HA" target="_blank" rel="noopener">Dellucht</a> - <a href="https://www.youtube.com/watch?v=LEWtLNozObA" target="_blank" rel="noopener">Thor</a></li>
-<li><button class="ts" data-seek="4395">1:13:15</button> <a href="https://www.youtube.com/channel/UC2zC0UYiSdwE6zbgy_ievKQ" target="_blank" rel="noopener">Johnny Holiday</a> - <a href="https://www.youtube.com/watch?v=LaVQrYQ0uwA" target="_blank" rel="noopener">Euphoric Electric Island Riddims</a></li>
-<li><button class="ts" data-seek="4455">1:14:15</button> <a href="https://www.youtube.com/channel/UCuE7CTNtollKddtiTmiaI8g" target="_blank" rel="noopener">Starkato</a> - <a href="https://www.youtube.com/watch?v=7g5-bOgAA48" target="_blank" rel="noopener">Python</a></li>
-<li><button class="ts" data-seek="4515">1:15:15</button> <a href="https://www.youtube.com/channel/UCSrehITO-HM4kxWAvO3Q2OA" target="_blank" rel="noopener">BLR</a> &amp; POOK - <a href="https://www.youtube.com/watch?v=C2f6lb1xLKM" target="_blank" rel="noopener">Taj (Extended Mix)</a></li>
-<li><button class="ts" data-seek="4605">1:16:45</button> <a href="http://www.the-goooniez.com/" target="_blank" rel="noopener">The Goooniez</a> - <a href="https://www.youtube.com/watch?v=7igXGr3CUTg" target="_blank" rel="noopener">A****Loch (Dabruck &amp; Klein Remix)</a></li>
-<li><button class="ts" data-seek="4785">1:19:45</button> <a href="https://mn2s.com/booking-agency/live-roster/snap/" target="_blank" rel="noopener">Snap!</a> - <a href="https://www.youtube.com/watch?v=JYIaWeVL1JM" target="_blank" rel="noopener">Rhythm Is a Dancer</a></li>
-<li><button class="ts" data-seek="4815">1:20:15</button> <a href="https://www.youtube.com/channel/UCyObB2SXdSohh3JodqeABTQ" target="_blank" rel="noopener">Franck Roger</a> - <a href="https://www.youtube.com/watch?v=fYocHe68ohI" target="_blank" rel="noopener">Can You Dig It ? (Beat-A-pella)</a> <span class="vox">vocal</span></li>
-</ul>
-</main><script>
-document.querySelectorAll('.ts').forEach(function(b){
-  b.addEventListener('click',function(){
-    var a=document.getElementById('a');
-    a.currentTime=+b.dataset.seek;
-    a.play();
-  });
+<p>Detected at only one point in the mix, so these are usually quick vocal layers, accapellas or samples rather than full tracks.</p>
+<ol class="tfs-tracklist">
+<li><span class="tfs-ts" data-seek="525" role="button" tabindex="0" title="Jump to 8:45">8:45</span> <a href="https://www.youtube.com/channel/UCU_km9t9g2GOdRI3YpgaTNQ" target="_blank" rel="noopener">Vencer Cafe</a> &amp; Orlam - <a href="https://www.youtube.com/watch?v=pvcc-wqJcvI" target="_blank" rel="noopener">Called to Say Hi (Rumba Mix)</a></li>
+<li><span class="tfs-ts" data-seek="1185" role="button" tabindex="0" title="Jump to 19:45">19:45</span> <a href="https://www.youtube.com/channel/UCnOxaDXBiBXg9Nn9hKWu6aw" target="_blank" rel="noopener">The DangerFeel Newbies</a> - <a href="https://www.youtube.com/watch?v=25UEsOIg8EE" target="_blank" rel="noopener">What Am I Here for? (Ndatl Vocal - Danny Krivit Edit)</a> <span class="vox">vocal</span></li>
+<li><span class="tfs-ts" data-seek="1215" role="button" tabindex="0" title="Jump to 20:15">20:15</span> <a href="http://www.tanyalouise.com/" target="_blank" rel="noopener">Tanya Louise</a> - <a href="https://www.youtube.com/watch?v=Nc1sDTvRiQ0" target="_blank" rel="noopener">Deep in You (Rob&#x27;s Vibey Dub)</a></li>
+<li><span class="tfs-ts" data-seek="1275" role="button" tabindex="0" title="Jump to 21:15">21:15</span> <a href="https://www.youtube.com/channel/UCuED6By6MiMj4Zv7P7Zq3Og" target="_blank" rel="noopener">Tinush</a> - <a href="https://www.youtube.com/watch?v=0Z8_a8qxv_0" target="_blank" rel="noopener">Struggle (Franky Rizardo Sunset Mix)</a></li>
+<li><span class="tfs-ts" data-seek="1485" role="button" tabindex="0" title="Jump to 24:45">24:45</span> EMMANUELLE - Italove</li>
+<li><span class="tfs-ts" data-seek="1695" role="button" tabindex="0" title="Jump to 28:15">28:15</span> <a href="https://www.youtube.com/channel/UCq_cQwWiyUPK8aYutyL1wcA" target="_blank" rel="noopener">Venntaur</a> - <a href="https://www.youtube.com/watch?v=O2ghF7KPTEo" target="_blank" rel="noopener">You Got Feeling (Datakestra Remix)</a></li>
+<li><span class="tfs-ts" data-seek="2535" role="button" tabindex="0" title="Jump to 42:15">42:15</span> <a href="http://kingbritt.com/" target="_blank" rel="noopener">King Britt</a> &amp; <a href="https://www.musixrecords.com/firefly/" target="_blank" rel="noopener">Firefly</a> - <a href="https://www.youtube.com/watch?v=rzsP2fxPzmk" target="_blank" rel="noopener">Supernatural (feat. Ursula Rucker) [Accapella]</a> <span class="vox">vocal</span></li>
+<li><span class="tfs-ts" data-seek="3195" role="button" tabindex="0" title="Jump to 53:15">53:15</span> <a href="http://www.formatb.com/" target="_blank" rel="noopener">Format:B</a> - <a href="https://www.youtube.com/watch?v=vKiRgcbB6sQ" target="_blank" rel="noopener">Chunky</a></li>
+<li><span class="tfs-ts" data-seek="3345" role="button" tabindex="0" title="Jump to 55:45">55:45</span> <a href="http://cosmic-gate.de/" target="_blank" rel="noopener">Cosmic Gate</a> - <a href="https://www.youtube.com/watch?v=aKrUBpPGr4I" target="_blank" rel="noopener">Light Years (Extended Mix)</a></li>
+<li><span class="tfs-ts" data-seek="3435" role="button" tabindex="0" title="Jump to 57:15">57:15</span> <a href="https://www.youtube.com/channel/UCm1xZ08wkwoJjclZu3O6zxA" target="_blank" rel="noopener">Blaze</a> - <a href="https://www.youtube.com/watch?v=7CI6fBmMH64" target="_blank" rel="noopener">My Beat (feat. Palmer Brown) [Solid Groove Dub]</a></li>
+<li><span class="tfs-ts" data-seek="3825" role="button" tabindex="0" title="Jump to 1:03:45">1:03:45</span> <a href="http://www.jain-music.com/" target="_blank" rel="noopener">Jain</a> - <a href="https://www.youtube.com/watch?v=BEPR2QoBajU" target="_blank" rel="noopener">Makeba (De Fault X Rassell Khan Remix)</a></li>
+<li><span class="tfs-ts" data-seek="4035" role="button" tabindex="0" title="Jump to 1:07:15">1:07:15</span> <a href="https://www.youtube.com/channel/UCV-iSZdmPWV9pq-t-dlYzQg" target="_blank" rel="noopener">Ralph Noah</a> &amp; U-Gin - <a href="https://www.youtube.com/watch?v=4TFW-R-X3Vc" target="_blank" rel="noopener">L&#x27;appuntamento</a></li>
+<li><span class="tfs-ts" data-seek="4065" role="button" tabindex="0" title="Jump to 1:07:45">1:07:45</span> <a href="https://www.youtube.com/channel/UCuz1DxuvTNQ1KqwboDvk3KQ" target="_blank" rel="noopener">Girls of the Internet</a> &amp; Anelisa Lamola - <a href="https://www.youtube.com/watch?v=x4B8MQj0ZN8" target="_blank" rel="noopener">Affirmations (Dennis Ferrer Remix)</a></li>
+<li><span class="tfs-ts" data-seek="4095" role="button" tabindex="0" title="Jump to 1:08:15">1:08:15</span> <a href="https://www.youtube.com/channel/UC4N1snt2b0d83vOkvaWP6mg" target="_blank" rel="noopener">Vintage Culture</a> - <a href="https://www.youtube.com/watch?v=omK81KRfMWg" target="_blank" rel="noopener">Space</a></li>
+<li><span class="tfs-ts" data-seek="4275" role="button" tabindex="0" title="Jump to 1:11:15">1:11:15</span> <a href="https://www.youtube.com/channel/UCHE2KBhRS-8VWJUzUGla9HA" target="_blank" rel="noopener">Dellucht</a> - <a href="https://www.youtube.com/watch?v=LEWtLNozObA" target="_blank" rel="noopener">Thor</a></li>
+<li><span class="tfs-ts" data-seek="4395" role="button" tabindex="0" title="Jump to 1:13:15">1:13:15</span> <a href="https://www.youtube.com/channel/UC2zC0UYiSdwE6zbgy_ievKQ" target="_blank" rel="noopener">Johnny Holiday</a> - <a href="https://www.youtube.com/watch?v=LaVQrYQ0uwA" target="_blank" rel="noopener">Euphoric Electric Island Riddims</a></li>
+<li><span class="tfs-ts" data-seek="4455" role="button" tabindex="0" title="Jump to 1:14:15">1:14:15</span> <a href="https://www.youtube.com/channel/UCuE7CTNtollKddtiTmiaI8g" target="_blank" rel="noopener">Starkato</a> - <a href="https://www.youtube.com/watch?v=7g5-bOgAA48" target="_blank" rel="noopener">Python</a></li>
+<li><span class="tfs-ts" data-seek="4515" role="button" tabindex="0" title="Jump to 1:15:15">1:15:15</span> <a href="https://www.youtube.com/channel/UCSrehITO-HM4kxWAvO3Q2OA" target="_blank" rel="noopener">BLR</a> &amp; POOK - <a href="https://www.youtube.com/watch?v=C2f6lb1xLKM" target="_blank" rel="noopener">Taj (Extended Mix)</a></li>
+<li><span class="tfs-ts" data-seek="4605" role="button" tabindex="0" title="Jump to 1:16:45">1:16:45</span> <a href="http://www.the-goooniez.com/" target="_blank" rel="noopener">The Goooniez</a> - <a href="https://www.youtube.com/watch?v=7igXGr3CUTg" target="_blank" rel="noopener">A****Loch (Dabruck &amp; Klein Remix)</a></li>
+<li><span class="tfs-ts" data-seek="4785" role="button" tabindex="0" title="Jump to 1:19:45">1:19:45</span> <a href="https://mn2s.com/booking-agency/live-roster/snap/" target="_blank" rel="noopener">Snap!</a> - <a href="https://www.youtube.com/watch?v=JYIaWeVL1JM" target="_blank" rel="noopener">Rhythm Is a Dancer</a></li>
+<li><span class="tfs-ts" data-seek="4815" role="button" tabindex="0" title="Jump to 1:20:15">1:20:15</span> <a href="https://www.youtube.com/channel/UCyObB2SXdSohh3JodqeABTQ" target="_blank" rel="noopener">Franck Roger</a> - <a href="https://www.youtube.com/watch?v=fYocHe68ohI" target="_blank" rel="noopener">Can You Dig It ? (Beat-A-pella)</a> <span class="vox">vocal</span></li>
+</ol>
+</main>
+<script>
+(function(){
+function fmt(s){s=Math.max(0,Math.floor(s||0));var h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':'+(m<10?'0':''):'')+m+':'+(x<10?'0':'')+x}
+document.querySelectorAll('.tfsp').forEach(function(root){
+var a=root.querySelector('audio'),play=root.querySelector('.tfsp-play'),seek=root.querySelector('.tfsp-seek'),cur=root.querySelector('.tfsp-cur'),tot=root.querySelector('.tfsp-tot'),tip=root.querySelector('.tfsp-tip'),cv=root.querySelector('.tfsp-viz'),vol=root.querySelector('.tfsp-volume'),spd=root.querySelector('.tfsp-speed');
+var d0=parseFloat(root.dataset.dur)||0,speeds=[1,1.25,1.5,2,0.75],si=0,drag=false;
+function dur(){return isFinite(a.duration)&&a.duration>0?a.duration:d0}
+function paint(){var d=dur(),t=a.currentTime||0;if(!drag&&d){seek.value=Math.round(t/d*1000)}
+seek.style.setProperty('--p',(t/(d||1)*100)+'%');
+var b=0;try{if(a.buffered.length){b=a.buffered.end(a.buffered.length-1)/(d||1)*100}}catch(e){}
+seek.style.setProperty('--b',Math.max(b,t/(d||1)*100)+'%');cur.textContent=fmt(t);if(d)tot.textContent=fmt(d)}
+function toggle(){if(a.paused){a.preload='auto';var p=a.play();if(p&&p.catch)p.catch(function(){})}else{a.pause()}}
+play.addEventListener('click',toggle);
+a.addEventListener('play',function(){root.classList.add('playing');play.setAttribute('aria-label','Pause');startViz()});
+a.addEventListener('pause',function(){root.classList.remove('playing');play.setAttribute('aria-label','Play')});
+['timeupdate','progress','loadedmetadata','durationchange'].forEach(function(e){a.addEventListener(e,paint)});
+seek.addEventListener('input',function(){drag=true;var d=dur();var t=seek.value/1000*d;seek.style.setProperty('--p',(seek.value/10)+'%');cur.textContent=fmt(t)});
+seek.addEventListener('change',function(){var d=dur();a.currentTime=seek.value/1000*d;drag=false;paint()});
+seek.addEventListener('mousemove',function(e){var r=seek.getBoundingClientRect(),f=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));tip.style.left=(f*100)+'%';tip.textContent=fmt(f*dur())});
+root.querySelectorAll('.tfsp-skip').forEach(function(b){b.addEventListener('click',function(){a.currentTime=Math.max(0,Math.min(dur(),(a.currentTime||0)+parseFloat(b.dataset.skip)));paint()})});
+spd.addEventListener('click',function(){si=(si+1)%speeds.length;a.playbackRate=speeds[si];spd.textContent=speeds[si]+'x'});
+vol.addEventListener('input',function(){a.volume=vol.value/100});
+root.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT'&&e.target.type==='range')return;if(e.code==='Space'){e.preventDefault();toggle()}});
+if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:root.dataset.title||'Recording',artist:'The Fertile Soil',artwork:root.dataset.art?[{src:root.dataset.art}]:[]});navigator.mediaSession.setActionHandler('play',toggle);navigator.mediaSession.setActionHandler('pause',toggle);navigator.mediaSession.setActionHandler('seekbackward',function(){a.currentTime-=30});navigator.mediaSession.setActionHandler('seekforward',function(){a.currentTime+=30})}catch(e){}}
+var ctx=null,an=null,data=null,started=false,raf=0,g2=cv.getContext('2d'),N=48,hts=[];
+var cols=['#f08a24','#e8467c','#a14fd6','#3b7be0'];
+function startViz(){if(!started){started=true;try{var AC=window.AudioContext||window.webkitAudioContext;ctx=new AC();var s=ctx.createMediaElementSource(a);an=ctx.createAnalyser();an.fftSize=256;an.smoothingTimeConstant=.8;s.connect(an);an.connect(ctx.destination);data=new Uint8Array(an.frequencyBinCount)}catch(e){an=null}}
+if(ctx&&ctx.state==='suspended'){ctx.resume()}
+if(!raf)draw()}
+function draw(){var W=cv.width,H=cv.height;g2.clearRect(0,0,W,H);var bw=W/N,t=Date.now()/400;
+if(an){an.getByteFrequencyData(data)}
+var gr=g2.createLinearGradient(0,0,W,0);cols.forEach(function(c,i){gr.addColorStop(i/(cols.length-1),c)});g2.fillStyle=gr;
+for(var i=0;i<N;i++){var v;if(an){var k=Math.floor(Math.pow(i/N,1.5)*(data.length*.8));v=data[k]/255}else{v=root.classList.contains('playing')?(.35+.3*Math.sin(t+i*.5)+.2*Math.sin(t*1.7+i)):0}
+if(!root.classList.contains('playing'))v=.04+.02*Math.sin(t*.6+i*.4);
+var h=Math.max(4,v*H*.95),x=i*bw+bw*.15,w=bw*.7,y=H-h;
+g2.beginPath();if(g2.roundRect){g2.roundRect(x,y,w,h,w/2)}else{g2.rect(x,y,w,h)}g2.fill()}
+raf=requestAnimationFrame(draw)}
+var nowEl=root.querySelector('.tfsp-now'),items=null;
+function build(){items=[];var ol=document.querySelector('.tfs-tracklist');if(!ol)return;ol.querySelectorAll('li').forEach(function(li){var s=li.querySelector('[data-seek]');if(!s)return;var c=li.cloneNode(true);var ts=c.querySelector('[data-seek]');ts.parentNode.removeChild(ts);items.push({t:parseFloat(s.getAttribute('data-seek'))||0,x:c.textContent.replace(/\s+/g,' ').trim()})});items.sort(function(p,q){return p.t-q.t})}
+function now(){if(!nowEl)return;if(!items)build();var t=a.currentTime||0,cu='';for(var i=0;i<items.length;i++){if(items[i].t<=t)cu=items[i].x;else break}if(nowEl.textContent!==cu)nowEl.textContent=cu;nowEl.classList.toggle('on',!!cu)}
+a.addEventListener('timeupdate',now);a.addEventListener('seeked',now);now();
+paint();
+if(!('IntersectionObserver' in window)){draw()}else{new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting&&!raf){draw()}else if(!e.isIntersecting&&raf){cancelAnimationFrame(raf);raf=0}})}).observe(cv)}
 });
-var a=document.getElementById('a'),now=document.getElementById('now'),items=[];
-document.querySelector('ol').querySelectorAll('li').forEach(function(li){
-  var b=li.querySelector('.ts'),c=li.cloneNode(true);c.removeChild(c.querySelector('.ts'));
-  items.push({t:+b.dataset.seek,x:c.textContent.replace(/\s+/g,' ').trim()});
-});
-function show(){var t=a.currentTime,cur='';for(var i=0;i<items.length;i++){if(items[i].t<=t)cur=items[i].x;else break}now.textContent=cur}
-a.addEventListener('timeupdate',show);a.addEventListener('seeked',show);
-</script></body></html>
+})();
+</script>
+<script>
+(function(){function go(el){var a=document.querySelector(".tfsp audio");if(!a)return;var t=parseFloat(el.getAttribute("data-seek"))||0;a.preload="auto";a.currentTime=t;var p=a.play();if(p&&p.catch)p.catch(function(){});var pl=document.querySelector(".tfsp");if(pl)pl.scrollIntoView({behavior:"smooth",block:"center"})}document.addEventListener("click",function(e){var el=e.target.closest("[data-seek]");if(el)go(el)});document.addEventListener("keydown",function(e){if((e.key==="Enter"||e.key===" ")&&e.target.hasAttribute&&e.target.hasAttribute("data-seek")){e.preventDefault();go(e.target)}})})();
+</script>
+</body></html>

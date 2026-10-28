@@ -10,6 +10,7 @@ The main list holds the tracks heard more than once. The second list holds
 tracks heard only once, which are usually quick vocal layers, accapellas or
 samples. Entries marked "vocal" are vocal only or vocal heavy.
 
-The page also shows the artist and song that is playing, under the player,
-and links the original mix on YouTube. The mix is by Manoo. It is not ours and
+The page uses the same player as thefertilesoil.org: a live equalizer, 30 second
+skip buttons, speed and volume, and the artist and song that is playing under
+the equalizer. It also links the original mix on YouTube. The mix is by Manoo. It is not ours and
 we have no connection to it. We use it to show what the software does.
