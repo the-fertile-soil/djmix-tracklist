@@ -14,7 +14,9 @@ a{color:var(--ac)} .ts{font:inherit;font-variant-numeric:tabular-nums;background
 .vox{font-size:12px;background:var(--ac);color:var(--bg);border-radius:10px;padding:1px 8px;margin-left:6px}
 </style></head><body><main>
 <h1>Manoo at Djoon</h1><p class="sub">July 12, 2025. Track list with times. Click a time to jump to it.</p>
+<p class="sub">We are using this mix by the amazing Manoo to highlight the capabilities of the <a href="https://github.com/the-fertile-soil/djmix-tracklist" target="_blank" rel="noopener">DJ Mix Track List</a> software. View the <a href="https://www.youtube.com/watch?v=p01N7mNPwwU" target="_blank" rel="noopener">original mix on YouTube here</a>.</p>
 <audio id="a" controls preload="metadata" src="manoo-djoon.mp3"></audio>
+<p id="now" class="sub" aria-live="polite" style="min-height:1.6em;margin:8px 0 0;font-weight:600"></p>
 <h2>Track List</h2><ol>
 <li><button class="ts" data-seek="45">0:45</button> <a href="https://www.youtube.com/channel/UC4ajN6GZHH3A3-kyuwSZnCA" target="_blank" rel="noopener">Quentin Harris</a> - <a href="https://www.youtube.com/watch?v=azpjV7ymAGc" target="_blank" rel="noopener">My Joy</a></li>
 <li><button class="ts" data-seek="225">3:45</button> <a href="https://www.youtube.com/channel/UC-mUQedlaazRzM3U2q3rFUA" target="_blank" rel="noopener">Télépopmusik</a> - <a href="https://www.youtube.com/watch?v=RgkycA7aMvs" target="_blank" rel="noopener">Love Can Damage Your Health (Abicah Soul/Dennis Ferrer Remix)</a></li>
@@ -22,7 +24,7 @@ a{color:var(--ac)} .ts{font:inherit;font-variant-numeric:tabular-nums;background
 <li><button class="ts" data-seek="795">13:15</button> <a href="https://www.youtube.com/channel/UClHlXlJ1kyQcQIp6VYi4-MQ" target="_blank" rel="noopener">DJ Le Roi</a> - <a href="https://www.youtube.com/watch?v=1DHrjZ4NnQU" target="_blank" rel="noopener">Get Ready (Halo City Deep Vocal Dub Mix)</a> <span class="vox">vocal</span></li>
 <li><button class="ts" data-seek="1305">21:45</button> <a href="https://www.youtube.com/channel/UCFI1aw_bIkig8ttaeoGm2Jg" target="_blank" rel="noopener">musclecars</a> - <a href="https://www.youtube.com/watch?v=Z8JGfghq3mU" target="_blank" rel="noopener">Water (feat. New Past) [Mark Francis Remix]</a></li>
 <li><button class="ts" data-seek="1905">31:45</button> <a href="https://www.youtube.com/channel/UCDtzR7exCkjFIn8E7DBqfIg" target="_blank" rel="noopener">Chaleee</a> &amp; DJEFF &amp; <a href="http://djelytapa.com/" target="_blank" rel="noopener">Djely Tapa</a> - <a href="https://www.youtube.com/watch?v=kQ-AWEwnU8s" target="_blank" rel="noopener">Freedom (Barokan Remix)</a></li>
-<li><button class="ts" data-seek="2295">38:15</button> <a href="https://www.youtube.com/channel/UChKVQVn14nIt4pTW34SUU6w" target="_blank" rel="noopener">Akpossoul</a> &amp; Manoo - <a href="https://www.youtube.com/watch?v=pSDET13QouE" target="_blank" rel="noopener">FORCE</a></li>
+<li><button class="ts" data-seek="2295">38:15</button> <a href="https://www.youtube.com/channel/UChKVQVn14nIt4pTW34SUU6w" target="_blank" rel="noopener">Akpossoul</a> &amp; <a href="https://www.youtube.com/channel/UCILRRuu-qe_HqRH_KJ_6g-A" target="_blank" rel="noopener">Manoo</a> - <a href="https://www.youtube.com/watch?v=pSDET13QouE" target="_blank" rel="noopener">FORCE</a></li>
 <li><button class="ts" data-seek="2685">44:45</button> <a href="https://www.youtube.com/channel/UCXeLX0s9Kd2w9-KIyKmn7Cw" target="_blank" rel="noopener">Dr Feel</a> &amp; Toshi - <a href="https://www.youtube.com/watch?v=2weUiDCtCoc" target="_blank" rel="noopener">Amanxeba (Manoo Remix)</a></li>
 <li><button class="ts" data-seek="3225">53:45</button> <a href="https://www.youtube.com/channel/UCLcu73Vxl_CKAWW5l2AxAPQ" target="_blank" rel="noopener">Tone Depth</a> - <a href="https://www.youtube.com/watch?v=VldMUVjihiM" target="_blank" rel="noopener">Pelago</a></li>
 <li><button class="ts" data-seek="3525">58:45</button> <a href="https://www.youtube.com/channel/UCd5WX10CVadiGoKgzwaGBkQ" target="_blank" rel="noopener">Voices</a> - <a href="https://www.youtube.com/watch?v=35-hyeA5aEI" target="_blank" rel="noopener">Voices in My Mind (Maw Mix)</a></li>
@@ -65,4 +67,11 @@ document.querySelectorAll('.ts').forEach(function(b){
     a.play();
   });
 });
+var a=document.getElementById('a'),now=document.getElementById('now'),items=[];
+document.querySelector('ol').querySelectorAll('li').forEach(function(li){
+  var b=li.querySelector('.ts'),c=li.cloneNode(true);c.removeChild(c.querySelector('.ts'));
+  items.push({t:+b.dataset.seek,x:c.textContent.replace(/\s+/g,' ').trim()});
+});
+function show(){var t=a.currentTime,cur='';for(var i=0;i<items.length;i++){if(items[i].t<=t)cur=items[i].x;else break}now.textContent=cur}
+a.addEventListener('timeupdate',show);a.addEventListener('seeked',show);
 </script></body></html>
