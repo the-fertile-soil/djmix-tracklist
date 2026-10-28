@@ -10,17 +10,44 @@ It was built by The Fertile Soil to add track lists to our community DJ recordin
 
 - Python 3.10 or newer
 - ffmpeg and ffprobe
-- pip install -r requirements.txt
+- `pip install -r requirements.txt`
 
 ## Use
 
-    python scripts/scan.py mix.mp3 60 0  > hits_a.jsonl
-    python scripts/scan.py mix.mp3 60 30 > hits_b.jsonl
-    python scripts/merge.py hits_a.jsonl hits_b.jsonl
+```
+python scripts/scan.py mix.mp3 60 0  > hits_a.jsonl
+python scripts/scan.py mix.mp3 60 30 > hits_b.jsonl
+python scripts/merge.py hits_a.jsonl hits_b.jsonl
+```
 
 The first number is the step in seconds. The second is the starting offset.
 Running two passes offset by half the step catches short blends.
 Use a smaller step (20 to 30 seconds) to zoom in on a section.
+
+## Second pass for vocals, acapellas and layered samples
+
+The first pass finds full tracks. DJs also lay acapellas, vocal snippets and
+samples over other tracks. These show up as matches that appear only once, so
+they need a second pass of their own.
+
+1. Run both offset scans from the section above and merge them. Tracks matched
+   in two or more samples are your main track list.
+2. Entries marked "unconfirmed, heard once" go in a separate second section,
+   for example "Vocals, acapellas and layered samples". Keep them out of the
+   main list.
+3. Zoom in on each one. Scan again with a small step (10 to 15 seconds) and an
+   offset that lands just before that time, then read only the rows near it.
+   This shows how long the layer lasts and whether the match repeats.
+   ```
+   python scripts/scan.py mix.mp3 15 <seconds-before-the-time> > zoom.jsonl
+   ```
+4. Listen to the section. A title that names an acapella, a vocal or a remix
+   usually means a layer. A match from an unrelated track is probably a sample
+   or a mistake. Keep only what you can hear.
+5. Give each entry the same three parts as the main list: the jump point, the
+   artist page and the YouTube link. Tag clear vocal-only entries "vocal".
+6. Say at the top of the section that these were heard once. Readers should
+   know they are short layers and not full tracks.
 
 ## Check the results
 
@@ -31,43 +58,8 @@ Use a smaller step (20 to 30 seconds) to zoom in on a section.
 
 ## The skill
 
-SKILL.md describes the workflow in the Agent Skills format, so an AI
+`SKILL.md` describes the workflow in the Agent Skills format, so an AI
 coding assistant can run it for you.
-
-## Example
-
-examples/manoo-djoon holds a finished track list for a two hour mix, with a player and
-clickable times. Open its index.html in a browser. The audio file is not included.
-
-[Watch the original mix on YouTube](https://www.youtube.com/watch?v=p01N7mNPwwU)
-
-## What each track holds
-
-Every track in the list has three parts:
-
-1. A jump point. Click the time and the player jumps to that spot in the mix.
-2. The artist page. A link to the artist website or channel.
-3. A YouTube link to the track.
-
-![The three parts of a track](docs/track-parts.png)
-
-## Make it your own
-
-The example page is plain HTML and CSS, so you can change the look.
-
-**Background.** Set a color, a gradient or an image on the body:
-
-![Background examples](docs/backgrounds.png)
-
-    body { background: linear-gradient(180deg, #0f2a24, #1f5a45); color: #fff; }
-    main { background: rgba(10, 30, 24, 0.72); border-radius: 16px; }
-    /* or an image: body { background: url(cover.jpg) center / cover fixed; } */
-
-**Controls.** Restyle the built in player, or hide it and draw your own buttons that call play(), pause() and set currentTime on the audio element:
-
-![Controller examples](docs/controllers.png)
-
-    audio { filter: invert(1) hue-rotate(250deg); border-radius: 40px; }
 
 ## Share and improve
 
